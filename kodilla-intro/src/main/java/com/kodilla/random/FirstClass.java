@@ -22,5 +22,5 @@ public class FirstClass {
         oldNotebook.checkWeight();
         oldNotebook.checkYear();
 
-}
     }
+}
