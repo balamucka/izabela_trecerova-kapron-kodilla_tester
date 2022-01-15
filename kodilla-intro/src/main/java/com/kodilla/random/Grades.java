@@ -45,7 +45,9 @@ public class Grades {
         double averageGrades = sum / numberOfGrades;
         return averageGrades;
     }
+
 }
+
 
 
 
