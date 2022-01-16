@@ -1,11 +1,9 @@
 package com.kodilla.random;
 
-import java.util.ArrayList;
 
 public class Grades {
     private int[] grades;
     private int size;
-
 
     public Grades() {
         this.grades = new int[10];
@@ -21,33 +19,22 @@ public class Grades {
     }
 
     public int getLastGrade() {
-
-        ArrayList<Integer> list = new ArrayList<Integer>(10);
-        list.add(5);
-        list.add(4);
-        list.add(2);
-        list.add(5);
-        list.add(3);
-
-        int lastGrade = list.get(list.size() - 1);
-        return lastGrade;
+        int grade = grades[9];
+        System.out.println(grades[9]);
     }
 
-    public double calculateAverage() {
-        double[] gradebook = {5, 4, 2, 5, 3};
-        double sum = 0.0;
-        int numberOfGrades = gradebook.length;
+    public void calculateAverage() {
+        int sum = 0.0;
+        int numberOfGrades = grades.length;
 
-        for (int i = 0; i < gradebook.length; i++) {
-            sum += gradebook[i];
+        for (int i = 0; i < grades.length; i++) {
+            sum += grades[i];
         }
-
-        double averageGrades = sum / numberOfGrades;
-        return averageGrades;
+        int average = sum / numberOfGrades;
+        System.out.println(average);
     }
 
 }
-
 
 
 
