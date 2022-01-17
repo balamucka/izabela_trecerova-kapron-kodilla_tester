@@ -14,12 +14,17 @@ public class Colours {
 
     public static String getColoursName() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Proszę podać pierwszą literę koloru:");
-        String Colours = scanner.nextLine().trim().toUpperCase();
-        if (Colours.contains(Colours)){
+        String Colours = null;
 
-        }else {
-            System.out.println("Zły kolor. Proszę wybrać jeszcze raz.");
+        boolean isValid=false;
+        while (!isValid) {
+            System.out.println("Proszę podać pierwszą literę koloru:");
+            Colours = scanner.nextLine().trim().toUpperCase();
+            for (ColoursName c:ColoursName.values()) {
+                if (c.name().equals(Colours)) {
+                    isValid = true;
+                }
+            }
         }
         return Colours;
     }

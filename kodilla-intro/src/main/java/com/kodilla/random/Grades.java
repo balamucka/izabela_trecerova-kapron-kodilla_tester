@@ -19,18 +19,19 @@ public class Grades {
     }
 
     public int getLastGrade() {
-        int grade = grades[9];
-        System.out.println(grades[9]);
+        int grade = grades[size-1];
+        System.out.println(grades[size-1]);
+        return grade;
     }
 
     public void calculateAverage() {
-        int sum = 0.0;
-        int numberOfGrades = grades.length;
+        double sum = 0.0;
+        int numberOfGrades = size;
 
-        for (int i = 0; i < grades.length; i++) {
+        for (int i = 0; i < size; i++) {
             sum += grades[i];
         }
-        int average = sum / numberOfGrades;
+        double average = sum / numberOfGrades;
         System.out.println(average);
     }
 
