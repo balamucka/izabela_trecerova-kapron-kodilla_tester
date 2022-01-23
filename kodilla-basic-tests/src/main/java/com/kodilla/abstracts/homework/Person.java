@@ -4,12 +4,12 @@ public class Person {
 
     private String firstName;
     private int age;
-    private String job;
+    private String Job;
 
     public Person(String firstName, int age, String job) {
         this.firstName = firstName;
         this.age = age;
-        this.job = job;
+        this.Job = job;
     }
 
     public String getFirstName() {
@@ -29,11 +29,11 @@ public class Person {
     }
 
     public String getJob() {
-        return job;
+        return Job;
     }
 
     public void displayJob() {
-        System.out.println("zawód osoby: " + job + ".");
+        System.out.println("zawód osoby: " + Job + ".");
     }
 
 
