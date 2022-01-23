@@ -1,8 +1,9 @@
 package com.kodilla.abstracts.homework;
 
-public class Doctor extends Job{
+public class Doctor extends Job {
 
-    public Doctor(double salary, String responsibilities) {
-        super(15000, "leczenie");
+    public Doctor(int salary, String responsibilities) {
+        super(salary, responsibilities);
     }
 }
+
