@@ -10,11 +10,13 @@ public abstract class Job {
         this.responsibilities=responsibilities;
     }
 
+
     public String getResponsibilities() {
         return responsibilities;
     }
-    public void displayResponsibilities() {
-        System.out.println("Obowiązki w pracy to " + responsibilities + ".");
+    @Override
+    public String toString() {
+        return "Obowiązki w pracy to " + responsibilities + ".";
     }
 }
 
