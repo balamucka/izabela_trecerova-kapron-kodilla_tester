@@ -27,7 +27,37 @@ public class CalculatorTestSuite {
     @Test
     public void testSquare() {
         Calculator calculator = new Calculator();
-
-
+        int a = 5;
+        int squareResult = calculator.square(a);
+        assertEquals(25, squareResult);
     }
+
+    @Test
+    public void testSquareNumberLessThanZero() {
+        Calculator calculator = new Calculator();
+        int d = -8;
+        double delta = 0.001;
+        int squareNumberLessThanZeroResult = calculator.squareNumberLessThanZero(d);
+        assertEquals(64, squareNumberLessThanZeroResult, delta);
+    }
+
+    @Test
+    public void testSquareNumberEqualToZero() {
+        Calculator calculator = new Calculator();
+        int e = 0;
+        double delta = 0.001;
+        int squareNumberEqualToZeroResult = calculator.squareNumberEqualToZero(e);
+        assertEquals(0, squareNumberEqualToZeroResult, 0.001);
+    }
+
+    @Test
+    public void testSquareNumberGreaterThanZero() {
+        Calculator calculator = new Calculator();
+        int f = 3;
+        double delta = 0.001;
+        int squareNumberGreaterThanZeroResult = calculator.squareNumberGreaterThanZero(f);
+        assertEquals(9, squareNumberGreaterThanZeroResult, 0.001);
+    }
+
 }
+

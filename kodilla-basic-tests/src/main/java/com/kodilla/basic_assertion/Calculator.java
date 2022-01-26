@@ -13,4 +13,14 @@ public class Calculator {
     public int square(int a) {
         return a * a;
     }
+
+    public int squareNumberLessThanZero(int d) {
+        return d * d;
+    }
+    public int squareNumberEqualToZero(int e) {
+        return e * e;
+    }
+    public int squareNumberGreaterThanZero(int f) {
+        return f * f;
+    }
 }
