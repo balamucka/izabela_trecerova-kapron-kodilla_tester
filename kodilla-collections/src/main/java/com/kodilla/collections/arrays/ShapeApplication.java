@@ -1,9 +1,9 @@
 package com.kodilla.collections.arrays;
 
-import com.kodilla.collection.interfaces.Circle;
-import com.kodilla.collection.interfaces.Shape;
-import com.kodilla.collection.interfaces.Square;
-import com.kodilla.collection.interfaces.Triangle;
+import com.kodilla.collections.interfaces.Circle;
+import com.kodilla.collections.interfaces.Shape;
+import com.kodilla.collections.interfaces.Square;
+import com.kodilla.collections.interfaces.Triangle;
 
 import java.util.Random;
 

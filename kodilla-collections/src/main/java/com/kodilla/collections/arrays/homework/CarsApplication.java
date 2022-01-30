@@ -1,9 +1,9 @@
 package com.kodilla.collections.arrays.homework;
 
-import com.kodilla.collection.interfaces.homework.Car;
-import com.kodilla.collection.interfaces.homework.Skoda;
-import com.kodilla.collection.interfaces.homework.Toyota;
-import com.kodilla.collection.interfaces.homework.Volvo;
+import com.kodilla.collections.interfaces.homework.Car;
+import com.kodilla.collections.interfaces.homework.Skoda;
+import com.kodilla.collections.interfaces.homework.Toyota;
+import com.kodilla.collections.interfaces.homework.Volvo;
 
 import java.util.Random;
 
