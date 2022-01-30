@@ -15,11 +15,6 @@ public class CarRace {
 
     private static void doRace(Car car) {
         System.out.println("Aktualna prędkość: " + car.getSpeed());
-
-
-
-
-
     }
 
 }
