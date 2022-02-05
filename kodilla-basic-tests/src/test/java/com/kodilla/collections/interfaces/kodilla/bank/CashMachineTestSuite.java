@@ -1,60 +1,102 @@
 package com.kodilla.collections.interfaces.kodilla.bank;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.kodilla.collections.interfaces.kodilla.bank.homework.CashMachine;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class CashMachineTestSuite {
 
+    CashMachine cashMachine = new CashMachine(10000);
 
     @Test
-    public void shouldAddSixElementsToArray() {
-        CashMachine cashMachine = new CashMachine();
-        cashMachine.add(2500);
-        cashMachine.add(-700);
-        cashMachine.add(500);
-        cashMachine.add(400);
-        cashMachine.add(-150);
-        cashMachine.add(-300);
+    public void shouldHaveZeroLength() {
+            int[] transactions = cashMachine.getTransactions();
+            assertEquals(0, transactions.length);
+        }
 
-        int[] values = cashMachine.getValues();
-        assertEquals(6, values.length);
-        assertEquals(2500, values[0]);
-        assertEquals(-700, values[1]);
-        assertEquals(500, values[2]);
-        assertEquals(400, values[3]);
-        assertEquals(-150, values[4]);
-        assertEquals(-300, values[5]);
+    @Test
+    public void shouldAddNewTransactions() {
+        cashMachine.addTransaction(200);
+        assertEquals(1, cashMachine.getSize());
+        cashMachine.addTransaction(-500);
+        assertEquals(2, cashMachine.getSize());
+
     }
 
     @Test
-    public void shouldCalculateBalance() {
-        CashMachine cashMachine = new CashMachine();
-
-    }
-
-
-
-
-    @Test
-    public void shouldCalculatePaymentsAverage() {
-        CashMachine cashMachine = new CashMachine();
-        cashMachine.add(2500);
-        cashMachine.add(500);
-        cashMachine.add(400);
-
-        assertEquals(1133.333333333333,cashMachine.getAverageOfPayments(), 0.001);
+    public void shouldNotAddTransactionZeroValue() {
+        cashMachine.addTransaction(0);
+        assertEquals(0,cashMachine.getSize());
+        assertEquals(0,cashMachine.getDepositSize());
+        assertEquals(0,cashMachine.getWithdrawalSize());
     }
 
     @Test
-    public void shouldCalculatePayoutsAverage() {
-        CashMachine cashMachine = new CashMachine();
-        cashMachine.add(-150);
-        cashMachine.add(-550);
-        cashMachine.add(-3000);
-
-        assertEquals(-1233.333333333333, cashMachine.getAverageOfPayouts(),0.001);
+    public void shouldAddToDepositsPositiveValue() {
+        cashMachine.addTransaction(500);
+        assertEquals(1, cashMachine.getDepositSize());
     }
+
+    @Test
+    public void shouldAddToWithdrawalsNegativeValue() {
+        cashMachine.addTransaction(-600);
+        assertEquals(1, cashMachine.getWithdrawalSize());
+    }
+
+    @Test
+    public void shouldAddToBalancePositiveValue() {
+        cashMachine.addTransaction(400);
+        assertEquals(10400, cashMachine.getBalance());
+    }
+    @Test
+    public void shouldSubtractFromBalanceNegativeValue() {
+        cashMachine.addTransaction(-400);
+        assertEquals(9600, cashMachine.getBalance());
+    }
+    @Test
+    public void shouldDoNothingZeroValue() {
+        cashMachine.addTransaction(0);
+        assertEquals(10000, cashMachine.getBalance());
+    }
+    @Test
+    public void shouldNotWithdrawifBalanceNegative() {
+        cashMachine.addTransaction(-10200);
+        assertEquals(10000, cashMachine.getBalance());
+        assertEquals(0,cashMachine.getWithdrawalSize());
+    }
+    @Test
+    public void shouldSumDepositValues() {
+        cashMachine.addTransaction(500);
+        cashMachine.addTransaction(200);
+        cashMachine.addTransaction(400);
+        cashMachine.getDepositSum();
+        assertEquals(1100, cashMachine.getDepositSum());
+    }
+    @Test
+    public void shouldNotAddWithdrawalToDeposits() {
+        cashMachine.addTransaction(500);
+        cashMachine.addTransaction(-200);
+        cashMachine.addTransaction(400);
+        cashMachine.getDepositSum();
+        assertEquals(900, cashMachine.getDepositSum());
+    }
+    @Test
+    public void shouldSumWithdrawalValues() {
+        cashMachine.addTransaction(-500);
+        cashMachine.addTransaction(-200);
+        cashMachine.addTransaction(-400);
+        cashMachine.getWithdrawalSum();
+        assertEquals(-1100, cashMachine.getWithdrawalSum());
+    }
+    @Test
+    public void shouldNotAddDepositToWithdrawals() {
+        cashMachine.addTransaction(-500);
+        cashMachine.addTransaction(-200);
+        cashMachine.addTransaction(400);
+        cashMachine.getDepositSum();
+        assertEquals(-700, cashMachine.getWithdrawalSum());
+    }
+
+
 
 }

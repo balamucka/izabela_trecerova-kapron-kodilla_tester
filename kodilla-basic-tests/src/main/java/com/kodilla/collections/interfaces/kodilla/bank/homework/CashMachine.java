@@ -1,52 +1,96 @@
 package com.kodilla.collections.interfaces.kodilla.bank.homework;
 
 public class CashMachine {
-    private int[] values;
-    private int size;
-    private int accountBalance;
 
+    public int[] transactions;
+    public int balance;
+    int size;
+    int depositSize;
+    int withdrawalSize;
+    public int depositSum;
+    public int withdrawalSum;
 
-    public CashMachine() {
+    public CashMachine(int balance) {
+        this.transactions = new int[0];
         this.size = 0;
-        this.values = new int[0];
-        this.accountBalance = 15000;
-
+        this.balance = balance;
     }
 
-    public void add(int value) {
-        this.size++;
-        int[] newTab = new int[this.size];
-        System.arraycopy(values, 0, newTab, 0, values.length);
-        newTab[this.size - 1] = value;
-        this.values = newTab;
-    }
+    public void addTransaction(int value) {
+        if (value == 0) {
+            return;
+        } else {
+            this.size++;
+            int[] newTransactions = new int[this.size];
+            System.arraycopy(transactions, 0, newTransactions, 0, transactions.length);
+            newTransactions[this.size - 1] = value;
+            this.transactions = newTransactions;
+            System.out.println("Bilans " + this.getBalance());
+            if (value > 0) {
+                this.depositSize++;
+                balance += value;
+                System.out.println("Wpłacono " + value);
+            } else if (value < 0) {
+                if (balance < value * -1) {
+                    System.out.println("Bankomat nie ma środków do wykonania wypłaty.");
+                } else {
+                    this.withdrawalSize++;
+                    balance += value;
+                    System.out.println("Wypłacono " + value * -1);
+                }
+            } else {
+                System.out.println("Nie zmieniono stanu konta.");
 
-    public int[] getValues() {
-        return values;
-    }
-
-    public double getAverageOfPayments() {
-
-        double sum = 0;
-        for (int i = 0; i < this.values.length; i++) {
-            sum += this.values[i];
+            }
+            System.out.println("Saldo " + this.getBalance());
+            System.out.println("Lącznie wpłat: " + this.getDepositSize());
+            System.out.println("Lącznie wypłat: " + this.getWithdrawalSize());
+            System.out.println("Lącznie operacji: " + this.getSize());
         }
-        return sum / this.values.length;
     }
 
-    public double getAverageOfPayouts() {
-
-        double sum = 0;
-        for (int i = 0; i < this.values.length; i++) {
-            sum += this.values[i];
+    public int getDepositSum() {
+        depositSum = 0;
+        for(int i = 0; i < transactions.length; i++) {
+            if(transactions[i] > 0) {
+                depositSum += transactions[i];
+            }
         }
-        return sum / this.values.length;
+        return depositSum;
     }
 
-    public int getAccountBalance() {
-        return this.accountBalance;
+    public int getWithdrawalSum() {
+        withdrawalSum = 0;
+        for(int i = 0; i < transactions.length; i++) {
+            if(transactions[i] < 0) {
+                withdrawalSum += transactions[i];
+            }
+        }
+
+        return withdrawalSum;
     }
 
+    public int[] getTransactions() {
+
+        return transactions;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public int getSize() {
+
+        return size;
+    }
+
+    public int getDepositSize() {
+
+        return depositSize;
+    }
+
+    public int getWithdrawalSize() {
+
+        return withdrawalSize;
+    }
 }
-
-
