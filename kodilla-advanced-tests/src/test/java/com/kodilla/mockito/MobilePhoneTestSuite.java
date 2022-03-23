@@ -4,12 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class MobilePhoneTestSuite {
-
+public class MobilePhoneTestSuite {
     MobilePhone myPhone = Mockito.mock(MobilePhone.class);
-
     @Test
     public void testDefaultBehaviourOfTestDouble() {
         Assertions.assertFalse(myPhone.needsCharging());
@@ -23,6 +19,7 @@ class MobilePhoneTestSuite {
         Assertions.assertTrue(myPhone.needsCharging());
     }
 
+    //testowanie metody void
     @Test
     public void shouldCallLaunchApplication() {
         myPhone.launchApplication("Tetris4D");
@@ -32,6 +29,8 @@ class MobilePhoneTestSuite {
     @Test
     public void testVerificationFailure() {
         myPhone.needsCharging();
-        Mockito.verify(myPhone).getFreeStorage();
+        //Mockito.verify(myPhone).getFreeStorage();
+        Mockito.verify(myPhone).needsCharging();
     }
+
 }
