@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-class BookController {
+public class BookController {
 
     private final BookService bookService;
 
@@ -18,17 +18,14 @@ class BookController {
     }
 
     @GetMapping
-    public List<BookDto> getBooks() {
-        return bookService.getBooks();
-    }
+    public List<BookDto> getBooks() { return bookService.getBooks(); }
 
-    @PostMapping
-    public void addBook(@RequestBody BookDto bookDto) {
+    @PostMapping                                         // [1]
+    public void addBook(@RequestBody BookDto bookDto) {  // [2]
         bookService.addBook(bookDto);
     }
-
     @DeleteMapping
     public void removeBook(@RequestBody BookDto bookDto) {
-        bookService.removeBook(bookDto);
+        bookService.remove(bookDto);
     }
 }
