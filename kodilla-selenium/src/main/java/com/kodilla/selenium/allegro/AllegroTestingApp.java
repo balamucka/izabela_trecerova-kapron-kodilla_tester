@@ -5,16 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
 
 public class AllegroTestingApp {
 
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "c:\\selenium-drivers\\chrome\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        driver.get("https://www.ebay.pl/");
+        driver.get("https://www.ebay.com/");
 
 
-        WebElement inputField = driver.findElement(By.name("_nkw"));
+        WebElement inputField = driver.findElement(By.xpath("//*[@class=\"gh-tb ui-autocomplete-input\"]"));
         inputField.sendKeys("mavic mini");
 
         WebElement szukaj = driver.findElement(
