@@ -3,6 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.GoogleSearch;
 
 import static org.junit.Assert.assertSame;
@@ -13,9 +14,10 @@ public class TestGoogle {
 
     @Before
     public void testSetup() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver");
-        driver = new ChromeDriver();
-        driver.navigate().to("http://wwww.google.com");
+        System.setProperty("webdriver.chrome.driver", "c:\\selenium-drivers\\chrome\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        driver.navigate().to("http://www.google.com");
     }
 
     @After
