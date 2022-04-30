@@ -60,10 +60,10 @@ public class WalletSteps implements En {
             Assert.assertEquals("There is not enough money on your account", "There is not enough money on your account");
         });
 
+
         Given("There is $100 in my wallet", () -> {
             wallet.deposit(100);
             Assert.assertEquals("Incorrect wallet balance", 100, wallet.getBalance());
-
         });
         When("I check the balance of my wallet", () -> {
             System.out.println(wallet.getBalance());
