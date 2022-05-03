@@ -4,6 +4,7 @@ plugins {
     id 'checkstyle'
     id "com.github.spotbugs" version "3.0.0"
     id 'org.springframework.boot' version '2.2.1.RELEASE'
+
 }
 apply plugin: 'io.spring.dependency-management'
 
@@ -28,6 +29,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'mysql:mysql-connector-java'
 }
 
 jacocoTestCoverageVerification {
@@ -55,11 +57,11 @@ spotbugs {
     toolVersion = '3.1.12'
     ignoreFailures = true
 }
-
 spotbugsMain.reports {
     html.enabled = true
     xml.enabled = false
 }
+
 
 spotbugsTest.reports {
     html.enabled = true
