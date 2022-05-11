@@ -24,4 +24,11 @@ public class book {
                 ", author='" + author + '\'' +
                 '}';
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+
 }

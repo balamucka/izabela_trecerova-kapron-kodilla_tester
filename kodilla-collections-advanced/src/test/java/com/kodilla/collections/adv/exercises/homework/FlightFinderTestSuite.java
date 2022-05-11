@@ -9,19 +9,33 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FlightFinderTestSuite {
 
-    @Test
-    public void testFindFlightsFrom() {
-       FlightFinder flightFinder = new FlightFinder();
-       flightFinder.addFlight("Kraków", "Oslo");
+    FlightFinder flightFinder = new FlightFinder();
 
-       List<Flight> result = flightFinder.findFlightsFrom("Kraków");
+    @Test
+    public void testFindFlightsTo() {
+        List<Flight> result = flightFinder.findFlightTo("Paris");
+        result.add(new Flight("Warsaw","Paris"));
+        result.add(new Flight("Berlin","Paris"));
+        result.add(new Flight("Barcelona","Paris"));
+
+        List<Flight> expectedList = new ArrayList<>();
+        expectedList.add(new Flight("Warsaw", "Paris"));
+        expectedList.add(new Flight("Berlin", "Paris"));
+        expectedList.add(new Flight("Barcelona", "Paris"));
+        assertEquals(expectedList, result);
     }
 
     @Test
-    public void testFindFlightTo() {
-        FlightFinder flightFinder = new FlightFinder();
-        flightFinder.addFlight("Wrocław", "Londyn");
+    public void testFindFlightsFrom() {
+        List<Flight> result = flightFinder.findFlightsFrom("Prague");
+        result.add(new Flight("Prague","Warsaw"));
+        result.add(new Flight("Prague","Berlin"));
+        result.add(new Flight("Prague","London"));
 
-        List<Flight> result = flightFinder.findFlightsTo("Londyn");
+        List<Flight> expectedList = new ArrayList<>();
+        expectedList.add(new Flight("Prague", "Warsaw"));
+        expectedList.add(new Flight("Prague", "Berlin"));
+        expectedList.add(new Flight("Prague","London"));
+        assertEquals(expectedList, result);
     }
 }

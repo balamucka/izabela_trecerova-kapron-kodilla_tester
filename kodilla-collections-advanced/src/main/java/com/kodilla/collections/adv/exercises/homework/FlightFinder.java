@@ -3,22 +3,20 @@ package com.kodilla.collections.adv.exercises.homework;
 import java.util.*;
 
 public class FlightFinder {
-    Map<String, List<Flight>> flightFinder = new HashMap<>();
-
-    public void addFlight(String departure, String arrival) {
-
-
-    }
 
     public List<Flight> findFlightsFrom(String departure) {
-        return flightFinder.getOrDefault(departure, Collections.emptyList());
+        List<Flight> resultFrom = new ArrayList<>();
+        for (Flight flight : FlightRepository.getFlightTable()) {
+            if (flight.getDeparture().equals(departure));
+        }
+        return resultFrom;
     }
 
-    public List<Flight> findFlightsTo(String arrival) {
-    return flightFinder.getOrDefault(arrival, Collections.emptyList());
-    }
-
-    public int size() {
-        return flightFinder.size();
+    public List<Flight> findFlightTo(String arrival) {
+        List<Flight> resultTo = new ArrayList<>();
+        for (Flight flight : FlightRepository.getFlightTable()) {
+            if (flight.getArrival().equals(arrival)) ;
+        }
+        return resultTo;
     }
 }

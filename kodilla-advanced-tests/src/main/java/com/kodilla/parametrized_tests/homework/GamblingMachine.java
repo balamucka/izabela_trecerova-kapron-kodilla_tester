@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class GamblingMachine {
 
-    public int howManyWins(Set<Integer> userNumbers) throws InvalidNumbersException {
+    public static int howManyWins(Set<Integer> userNumbers) throws InvalidNumbersException {
         validateNumbers(userNumbers);
         Set<Integer> computerNumbers = generateComputerNumbers();
         int count = 0;
@@ -18,7 +18,7 @@ public class GamblingMachine {
         return count;
     }
 
-    private void validateNumbers(Set<Integer> numbers) throws InvalidNumbersException {
+    private static void validateNumbers(Set<Integer> numbers) throws InvalidNumbersException {
         if (numbers.size() != 6) {
             throw new InvalidNumbersException();
         }
@@ -28,7 +28,7 @@ public class GamblingMachine {
         }
     }
 
-    private Set<Integer> generateComputerNumbers() {
+    private static Set<Integer> generateComputerNumbers() {
         Set<Integer> numbers = new HashSet<>();
         Random generator = new Random();
         while(numbers.size() < 6) {
